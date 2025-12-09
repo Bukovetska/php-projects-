@@ -6,7 +6,6 @@ try {
     ]);
 }
 catch (PDOException $e) {
-    // var_dump($e->getMessage());
     echo 'A problem occured with the database connection...';
     die();
 }

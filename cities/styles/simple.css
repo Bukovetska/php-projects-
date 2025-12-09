@@ -37,10 +37,12 @@
   }
 }
 
+/* Reset box-sizing */
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
+/* Reset default appearance */
 textarea,
 select,
 input,
@@ -51,10 +53,12 @@ progress {
 }
 
 html {
+  /* Set the font globally */
   font-family: var(--sans-font);
   scroll-behavior: smooth;
 }
 
+/* Make the body a nice central block */
 body {
   color: var(--text);
   background-color: var(--bg);
@@ -68,6 +72,7 @@ body > * {
   grid-column: 2;
 }
 
+/* Make the header bg full width, but the content inline with body */
 body > header {
   background-color: var(--accent-bg);
   border-bottom: 1px solid var(--border);
@@ -86,6 +91,7 @@ body > header p {
   margin: 1rem auto;
 }
 
+/* Add a little padding to ensure spacing is correct between content and header > nav */
 main {
   padding-top: 1.5rem;
 }
@@ -99,6 +105,7 @@ body > footer {
   border-top: 1px solid var(--border);
 }
 
+/* Format headers */
 h1 {
   font-size: 3rem;
 }
@@ -129,16 +136,19 @@ p {
   margin: 1.5rem 0;
 }
 
+/* Prevent long strings from overflowing container */
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
+/* Fix line height when title wraps */
 h1,
 h2,
 h3 {
   line-height: 1.1;
 }
 
+/* Reduce header size on mobile */
 @media only screen and (max-width: 720px) {
   h1 {
     font-size: 2.5rem;
@@ -157,6 +167,7 @@ h3 {
   }
 }
 
+/* Format links & buttons */
 a,
 a:visited {
   color: var(--accent);
@@ -168,7 +179,7 @@ a:hover {
 
 button,
 .button,
-a.button, 
+a.button, /* extra specificity to override a */
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
@@ -196,6 +207,7 @@ input[type="range"] {
   padding: 0;
 }
 
+/* Set the cursor to '?' on an abbreviation and style the abbreviation to show that there is more information underneath */
 abbr[title] {
   cursor: help;
   text-decoration-line: underline;
@@ -223,11 +235,14 @@ input:enabled:focus-visible:where(
   outline-offset: 1px;
 }
 
+/* Format navigation */
 header > nav {
   font-size: 1rem;
   line-height: 2;
   padding: 1rem 0 0 0;
 }
+
+/* Use flexbox to allow items to wrap, as needed */
 header > nav ul,
 header > nav ol {
   align-content: space-around;
@@ -241,6 +256,7 @@ header > nav ol {
   padding: 0;
 }
 
+/* List items are inline elements, make them behave more like blocks */
 header > nav ul li,
 header > nav ol li {
   display: inline-block;
@@ -265,6 +281,7 @@ header > nav a[aria-current="page"] {
   cursor: pointer;
 }
 
+/* Reduce nav side on mobile */
 @media only screen and (max-width: 720px) {
   header > nav a {
     border: none;
@@ -274,6 +291,7 @@ header > nav a[aria-current="page"] {
   }
 }
 
+/* Consolidate box styling */
 aside, details, pre, progress {
   background-color: var(--accent-bg);
   border: 1px solid var(--border);
@@ -291,6 +309,8 @@ aside {
 *[dir="rtl"] aside {
   float: left;
 }
+
+/* Make aside full-width on mobile */
 @media only screen and (max-width: 720px) {
   aside {
     width: 100%;
@@ -318,6 +338,7 @@ section {
   margin: 3rem 0;
 }
 
+/* Don't double separators when chaining sections */
 section + section,
 section:first-child {
   border-top: 0;
@@ -353,6 +374,7 @@ details[open] > :last-child {
   margin-bottom: 0;
 }
 
+/* Format tables */
 table {
   border-collapse: collapse;
   margin: 1.5rem 0;
@@ -371,6 +393,7 @@ th {
 }
 
 tr:nth-child(even) {
+  /* Set every other cell slightly darker. Improves readability. */
   background-color: var(--accent-bg);
 }
 
@@ -379,6 +402,7 @@ table caption {
   margin-bottom: 0.5rem;
 }
 
+/* Format forms */
 textarea,
 select,
 input,
@@ -407,6 +431,7 @@ textarea:not([cols]) {
   width: 100%;
 }
 
+/* Add arrow to drop-down */
 select:not([multiple]) {
   background-image: linear-gradient(45deg, transparent 49%, var(--text) 51%),
     linear-gradient(135deg, var(--text) 51%, transparent 49%);
@@ -419,6 +444,7 @@ select:not([multiple]) {
   background-position: 10px, 15px;
 }
 
+/* checkbox and radio button style */
 input[type="checkbox"],
 input[type="radio"] {
   vertical-align: middle;
@@ -441,6 +467,7 @@ input[type="radio"]:checked {
 }
 
 input[type="checkbox"]:checked::after {
+  /* Creates a rectangle with colored right and bottom borders which is rotated to look like a check mark */
   content: " ";
   width: 0.18em;
   height: 0.32em;
@@ -455,6 +482,7 @@ input[type="checkbox"]:checked::after {
   transform: rotate(45deg);
 }
 input[type="radio"]:checked::after {
+  /* creates a colored circle for the checked radio button  */
   content: " ";
   width: 0.25em;
   height: 0.25em;
@@ -465,6 +493,8 @@ input[type="radio"]:checked::after {
   left: 0.125em;
   font-size: 32px;
 }
+
+/* Makes input fields wider on smaller screens */
 @media only screen and (max-width: 720px) {
   textarea,
   select,
@@ -473,15 +503,18 @@ input[type="radio"]:checked::after {
   }
 }
 
+/* Set a height for color input */
 input[type="color"] {
   height: 2.5rem;
   padding:  0.2rem;
 }
 
+/* do not show border around file selector button */
 input[type="file"] {
   border: 0;
 }
 
+/* Misc body elements */
 hr {
   border: none;
   height: 1px;
@@ -540,6 +573,7 @@ dt {
     color: var(--text-light);
 }
 
+/* Use mono font for code elements */
 code,
 pre,
 pre span,
@@ -564,6 +598,7 @@ pre {
   color: var(--preformatted);
 }
 
+/* Fix embedded code within pre */
 pre code {
   color: var(--preformatted);
   background: none;
@@ -571,6 +606,9 @@ pre code {
   padding: 0;
 }
 
+/* Progress bars */
+/* Declarations are repeated because you */
+/* cannot combine vendor-specific selectors */
 progress {
   width: 100%;
 }
@@ -617,6 +655,8 @@ dialog::backdrop {
   }
 }
 
+/* Superscript & Subscript */
+/* Prevent scripts from affecting line-height. */
 sup, sub {
   vertical-align: baseline;
   position: relative;
@@ -630,6 +670,7 @@ sub {
   top: 0.3em; 
 }
 
+/* Classes for notices */
 .notice {
   background: var(--accent-bg);
   border: 2px solid var(--border);
